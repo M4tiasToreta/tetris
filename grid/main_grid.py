@@ -1,30 +1,34 @@
 import pygame as pg
+import grid.helper_grid as helper_grid
 
 class MainGrid:
 
-    title = "Grid"
-    tiles_horizontal = 10
-    tiles_vertical = 20
-    tiles_size = 20
-    tiles_side_size = 30
-
     def __init__(self, main):
-        self.clock = pg.time.Clock()
-        self.running = True
         self.main = main
 
-    def grid_loop(self):
-        for row in range(self.tiles_vertical):
-            for col in range(self.tiles_horizontal):
-                rect = pg.Rect(self._place_grid_at_middle(col), 
-                               row*self.tiles_side_size,
-                               self.tiles_side_size, 
-                               self.tiles_side_size)
-                pg.draw.rect(self.main.surface, (40, 40, 40), rect, 1)
-        for event in pg.event.get():
-            if event.type == pg.QUIT:
-                self.loop = False
+    def grid(self):
+        self.draw_background_lines_grid()
+        self.draw_grid_white_outline()
+        self.draw_open_top_line()
         pg.display.update()
 
-    def _place_grid_at_middle(self, col):
-        return (self.main.window_width/2)-((self.tiles_horizontal/2)*self.tiles_side_size)+col*self.tiles_side_size
+    def draw_background_lines_grid(self):
+        for row in range(self.main.tiles_vertical):
+            for col in range(self.main.tiles_horizontal):
+                rect = pg.Rect(helper_grid.place_grid_at(self.main, col), 
+                               row*self.main.tiles_side_size + self.main.grid_y_axis_offset,
+                               self.main.tiles_side_size, 
+                               self.main.tiles_side_size)
+                pg.draw.rect(self.main.surface, (40, 40, 40), rect, 1)
+
+    def draw_grid_white_outline(self):
+        rect = pg.Rect(helper_grid.place_grid_at(self.main, 0), 
+                               self.main.grid_y_axis_offset,
+                               self.main.tiles_horizontal*self.main.tiles_side_size, 
+                               self.main.tiles_vertical*self.main.tiles_side_size)
+        pg.draw.rect(self.main.surface, (200, 200, 200), rect, 1)
+
+    def draw_open_top_line(self):
+        start_pos = (helper_grid.place_grid_at(self.main, 0), self.main.grid_y_axis_offset)
+        end_pos = (helper_grid.place_grid_at(self.main, 10), self.main.grid_y_axis_offset)
+        pg.draw.line(self.main.surface, (40, 40, 40), start_pos, end_pos)
