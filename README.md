@@ -2,14 +2,14 @@
 tetris game pygame
 
 TODO> <br/><br/>
-[x] draw grid
-[] add pieces
-[] add queue
-[] add commands
-[] add gravity
-[] add hold piece
-[] be able to play classic tetris
-[] add competitive tetr.io rules
-[] add competitive 1v1
-[] add competitive free for all(many)
-[] add api(remote play will be used to train Neural network)
+[x] draw grid<br/>
+[] add pieces<br/>
+[] add queue<br/>
+[] add commands<br/>
+[] add gravity<br/>
+[] add hold piece<br/>
+[] be able to play classic tetris<br/>
+[] add competitive tetr.io rules<br/>
+[] add competitive 1v1<br/>
+[] add competitive free for all(many)<br/>
+[] add api(remote play will be used to train Neural network)<br/>
