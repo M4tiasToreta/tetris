@@ -11,10 +11,11 @@ class Main:
     tiles_side_size = 30
     tiles_size = 20
     grid_y_axis_offset = 100
+    pg=pg
 
     def __init__(self):
-        pg.init()
-        self.surface = pg.display.set_mode((self.window_width, self.window_height))
+        self.pg.init()
+        self.surface = self.pg.display.set_mode((self.window_width, self.window_height))
         self.surface.fill((0, 0, 0))
         self.grid = MainGrid(self)
         self.queue_grid = QGrid(self)
