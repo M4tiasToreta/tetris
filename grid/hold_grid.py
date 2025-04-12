@@ -1,4 +1,4 @@
-import grid.helper_grid as helper_grid
+import resources.helper_grid as helper_grid
 
 class HoldGrid:
     def __init__(self, main):
