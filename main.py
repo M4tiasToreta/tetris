@@ -1,7 +1,7 @@
 from grid.main_grid import MainGrid
 from grid.queue_grid import QGrid
 from grid.hold_grid import HoldGrid
-from pieces.o_model import OModel
+from game.main_game import MainGame
 import pygame as pg
 
 class Main:
@@ -22,14 +22,14 @@ class Main:
         self.queue_grid = QGrid(self)
         self.hold_grid = HoldGrid(self)
         self.running = True
-        self.piece = OModel(self)
+        self.game = MainGame(self)
 
     def main(self):
         while self.running:
             self.grid.grid()
             self.queue_grid.grid()
             self.hold_grid.grid()
-            self.piece.draw_piece()
+            self.game.play()
             for event in pg.event.get():
                 if event.type == pg.QUIT:
                     self.running = False
